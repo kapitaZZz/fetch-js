@@ -25,8 +25,8 @@ public class DataInit {
 
     @PostConstruct
     private void postConstruct() {
-        Role roleAdmin = new Role("ADMIN");
-        Role roleUser = new Role("USER");
+        Role roleAdmin = new Role("ROLE_ADMIN");
+        Role roleUser = new Role("ROLE_USER");
         roleService.addRole(roleAdmin);
         roleService.addRole(roleUser);
 
