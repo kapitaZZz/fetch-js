@@ -31,6 +31,11 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "loginpage";
+    }
+
     @GetMapping(value = "/user")
     public String userInfo(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("user", user);
@@ -39,7 +44,9 @@ public class UserController {
     }
 
     @GetMapping(value = "/admin")
-    public String listUsers(Model model) {
+    public String listUsers(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("user", user);
+        model.addAttribute("allRoles", roleService.getAllRoles());
         model.addAttribute("allUsers", userService.getAllUsers());
         return "adminpage";
     }
@@ -68,7 +75,8 @@ public class UserController {
         return "new";
     }
 
-    @GetMapping(value = "/edit/{id}")
+
+        @GetMapping(value = "/edit/{id}")
     public String editUserForm(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("roles", roleService.getAllRoles());
