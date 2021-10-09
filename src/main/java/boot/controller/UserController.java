@@ -76,7 +76,7 @@ public class UserController {
     }
 
 
-        @GetMapping(value = "/edit/{id}")
+    @GetMapping(value = "/edit/{id}")
     public String editUserForm(@PathVariable("id") long id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("roles", roleService.getAllRoles());

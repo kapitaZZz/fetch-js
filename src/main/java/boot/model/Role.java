@@ -3,6 +3,7 @@ package boot.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Setter
 @Getter
 @NoArgsConstructor
+@ToString
 public class Role implements GrantedAuthority {
 
     @Id
