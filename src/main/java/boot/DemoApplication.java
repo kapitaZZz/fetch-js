@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConf
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @SpringBootApplication(exclude = {ErrorMvcAutoConfiguration.class})
-@EnableWebSecurity
 public class DemoApplication {
 
     public static void main(String[] args) {

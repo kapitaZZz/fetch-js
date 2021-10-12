@@ -1,7 +1,7 @@
 package boot.service;
 
-import boot.dao.RoleDao;
 import boot.model.Role;
+import boot.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,35 +10,35 @@ import java.util.List;
 @Service
 public class RoleServiceImpl implements RoleService {
 
-    private final RoleDao roleDao;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    public RoleServiceImpl(RoleDao roleDao) {
-        this.roleDao = roleDao;
+    public RoleServiceImpl(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
 
     @Override
     public void addRole(Role role) {
-        roleDao.addRole(role);
+        roleRepository.save(role);
     }
 
     @Override
     public void updateRole(Role role) {
-        roleDao.updateRole(role);
+        roleRepository.save(role);
     }
 
     @Override
     public void removeRoleById(long id) {
-        roleDao.removeRoleById(id);
+        roleRepository.deleteById(id);
     }
 
     @Override
     public List<Role> getAllRoles() {
-        return roleDao.getAllRoles();
+        return roleRepository.findAll();
     }
 
     @Override
     public Role getRoleByName(String name) {
-        return roleDao.getRoleByName(name);
+        return roleRepository.findByName(name);
     }
 }
